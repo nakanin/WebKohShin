@@ -21,15 +21,9 @@ app.on('ready', () => {
 
   setUpTray();
 
-  setInterval(() => {
-    pageListService.checkUpdate()
-      .then(newList => {
-        mainWindow.webContents.send('list-updated', newList);
-        if (newList.some(page => page.status === pageListService.STATUS_CHANGED)) {
-          notify();
-        }
-      });
-  }, 60*60*1000);
+  setInterval(() => checkUpdate(), 60*60*1000);
+
+  checkUpdate();
 });
 
 const template = [
@@ -95,6 +89,16 @@ const setUpTray = () => {
     }}
   ])
   tray.setContextMenu(contextMenu)
+};
+
+const checkUpdate = () => {
+  pageListService.checkUpdate()
+  .then(newList => {
+    mainWindow.webContents.send('list-updated', newList);
+    if (newList.some(page => page.status === pageListService.STATUS_CHANGED)) {
+      notify();
+    }
+  });
 };
 
 const notify = () => {
