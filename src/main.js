@@ -21,7 +21,7 @@ app.on('ready', () => {
 
   setUpTray();
 
-  setInterval(() => checkUpdate(), 60*60*1000);
+  setInterval(() => checkUpdate(), 4*60*60*1000);
 
   checkUpdate();
 });
