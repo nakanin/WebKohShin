@@ -2,12 +2,19 @@
 <html ng-app="webKohShin">
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Web サイト更新確認くん</title>
     <link rel="stylesheet" href="../bower_components/bulma/css/bulma.min.css">
   </head>
   <body ng-controller="MainController as main">
     <section class="section">
       <div class="container">
+        <div class="level">
+          <div class="level-left">
+            <span>4時間ごとに自動でチェックし、更新があれば通知します。</span>
+            <a class="button" ng-click="main.check()">今すぐ確認</a>
+          </div>
+        </div>
         <h3>登録済みサイト</h3>
         <table class="table">
           <thead>
@@ -33,8 +40,6 @@
             </tr>    
           </tbody>
         </table>
-        <p>1時間ごとに自動でチェックし、更新があれば通知します。</p>
-        <a class="button" ng-click="main.check()">今すぐ確認</a>
       </div>
     </section>
 
