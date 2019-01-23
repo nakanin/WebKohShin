@@ -5,7 +5,7 @@ const remote = electron.remote;
 const pageListService = remote.require('./lib/pageListService');
 const {ipcRenderer} = require('electron');
 
-const ngModule = angular.module('webKohShin', []);
+const ngModule = angular.module('webKohShin', ['ngSanitize']);
 
 ngModule.controller('MainController', function ($scope) {
   const main = this;

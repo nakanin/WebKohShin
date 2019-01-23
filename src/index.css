@@ -1,0 +1,10 @@
+del {
+  background-color: pink;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+ins {
+  background-color: lightgreen;
+  margin-left: 2px;
+  margin-right: 2px;
+}

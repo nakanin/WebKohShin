@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Web サイト更新確認くん</title>
     <link rel="stylesheet" href="../bower_components/bulma/css/bulma.min.css">
+    <link rel="stylesheet" href="../bower_components/components-font-awesome/css/fontawesome-all.min.css"></script>
+    <link rel="stylesheet" href="index.css">
   </head>
   <body ng-controller="MainController as main">
     <section class="section">
@@ -29,11 +31,28 @@
             <tr ng-repeat="page in main.pageList">
               <td><a ng-click="main.openUrl(page.url)">{{ page.url }}</a></td>
               <td>
-                <div ng-switch="page.status">
+                <span ng-switch="page.status">
                   <span ng-switch-when="noChange" class="tag is-light">更新なし</span>
                   <span ng-switch-when="changed" class="tag is-danger">更新あり！</span>
                   <span ng-switch-when="error" class="tag is-warning">エラー</span>
-                </div>
+                </span>
+                <span ng-if="page.status === 'changed'">
+                  <div class="dropdown is-hoverable">
+                    <div class="dropdown-trigger">
+                      <span class="icon has-text-grey-light">
+                        <i class="fas fa-info-circle" aria-hidden="true"></i>
+                      </span>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu2" role="menu">
+                      <div class="dropdown-content">
+                        <div class="dropdown-item">
+                          <h3 class="subtitle">差分確認（ピンクは削除、緑は追加箇所）</h3>
+                          <p ng-bind-html="page.diff"></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>                  
+                </span>
               </td>
               <td>{{ page.lastTime | date : 'yyyy-MM-dd HH:mm:ss'}}</td>
               <td><a class="button is-small is-danger is-rounded" ng-click="main.deleteUrl(page.url)">X</a></td>
@@ -54,6 +73,7 @@
     </section>
 
     <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="index.js"></script>
   </body>
 </html>

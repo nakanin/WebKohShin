@@ -56,8 +56,8 @@ const menu = Menu.buildFromTemplate(template);
 
 const setUpMainWindow = () => {
   mainWindow = new BrowserWindow({
-    width: 800, 
-    height: 600,
+    width: 1600, 
+    height: 900,
     icon: __dirname + '/icon.ico',
     show: true,
     minimizable: false,
