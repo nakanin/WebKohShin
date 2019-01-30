@@ -29,7 +29,7 @@
           </thead>
           <tbody>
             <tr ng-repeat="page in main.pageList">
-              <td><a ng-click="main.openUrl(page.url)">{{ page.url }}</a></td>
+              <td><a ng-click="main.openUrl(page.url)" title="{{ page.url }}">{{ main.urlLabel(page.url) }}</a></td>
               <td>
                 <span ng-switch="page.status">
                   <span ng-switch-when="noChange" class="tag is-light">更新なし</span>

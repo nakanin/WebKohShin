@@ -31,6 +31,7 @@ ngModule.controller('MainController', function ($scope) {
     const {shell} = require('electron');
     shell.openExternal(url);
   }
+  main.urlLabel = (url) => url.length > 80 ? url.substr(0, 80) + '...' : url;
 
   ipcRenderer.on('list-updated', (event, newList) => {
     $scope.$apply(() => {
