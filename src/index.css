@@ -1,9 +1,12 @@
-del {
+.diff-viewer {
+  min-width: 40rem;
+}
+.diff-viewer del {
   background-color: pink;
   margin-left: 2px;
   margin-right: 2px;
 }
-ins {
+.diff-viewer ins {
   background-color: lightgreen;
   margin-left: 2px;
   margin-right: 2px;
