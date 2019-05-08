@@ -117,6 +117,7 @@ const pageListService = {
               page.status = STATUS_CHANGED;
               page.hash = hash;
               page.diff = getDiff(page.url, text);
+              page.lastModified = Date.now();
             }
             page.lastTime = Date.now();
             delete page.error;

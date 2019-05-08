@@ -33,13 +33,13 @@
               <td>
                 <span ng-switch="page.status">
                   <span ng-switch-when="noChange" class="tag is-light">更新なし</span>
-                  <span ng-switch-when="changed" class="tag is-danger">更新あり！</span>
+                  <span ng-switch-when="changed" class="tag is-link">更新あり！</span>
                   <span ng-switch-when="error" class="tag is-warning">エラー</span>
                 </span>
-                <span ng-if="page.status === 'changed'">
+                <span>
                   <div class="dropdown is-hoverable">
                     <div class="dropdown-trigger">
-                      <span class="icon has-text-grey-light">
+                      <span class="icon" ng-class="{'has-text-grey-light': page.status !== 'changed'}">
                         <i class="fas fa-info-circle" aria-hidden="true"></i>
                       </span>
                     </div>
@@ -47,6 +47,8 @@
                       <div class="dropdown-content">
                         <div class="dropdown-item">
                           <h3 class="subtitle">差分確認（ピンクは削除、緑は追加箇所）</h3>
+                          <h4>最後の更新：{{ page.lastModified | date:'yyyy-MM-dd HH:mm:ss' }}</h4>
+                          <h4>--</h4>
                           <p ng-bind-html="page.diff"></p>
                         </div>
                       </div>
